@@ -1,19 +1,34 @@
 export default function Vision() {
   return (
-    <div className="container my-5">
-      <div className="row">
-        <div className="col-lg-8 mx-auto">
-          <h1 className="mb-4">Visión</h1>
-          <p className="lead">
-            Ser reconocidos como líderes en la industria, conocidos por nuestra innovación, 
-            calidad y compromiso con la excelencia.
-          </p>
-          <p>
-            Aspiramos a crear un impacto positivo en el mercado y en la vida de nuestros 
-            clientes, partners y colaboradores.
+    <div>
+      {/* HEADER */}
+      <section 
+        style={{
+          backgroundColor: 'var(--primary)',
+          color: 'white',
+          padding: '60px 0'
+        }}
+      >
+        <div className="container">
+          <h1 style={{ color: 'white', marginBottom: '12px' }}>Visión</h1>
+          <p className="lead" style={{ color: 'rgba(255, 255, 255, 0.95)', margin: 0 }}>
+            Hacia dónde vamos
           </p>
         </div>
-      </div>
+      </section>
+
+      {/* CONTENIDO */}
+      <section className="section">
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-8 mx-auto">
+              <p className="lead" style={{ marginBottom: '24px', color: 'var(--accent)', fontWeight: 600 }}>
+                Ser reconocidos como una empresa líder en ingeniería y construcción, destacada por su calidad, confiabilidad y capacidad de resolver proyectos complejos con eficiencia y responsabilidad, consolidándonos como un socio estratégico para clientes públicos y privados en todo Chile.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
