@@ -1,4 +1,7 @@
+import { useNavigate } from 'react-router-dom';
+
 export default function Home() {
+  const navigate = useNavigate();
   return (
     <>
       {/* HERO SECTION - CAMBIAR IMAGEN DE FONDO */}
@@ -20,7 +23,7 @@ export default function Home() {
           left: 0,
           right: 0,
           bottom: 0,
-          backgroundColor: 'rgba(26, 58, 82, 0.7)',
+          backgroundColor: 'rgba(45, 95, 127, 0.7)',
           zIndex: 1
         }}></div>
         
@@ -29,7 +32,7 @@ export default function Home() {
           <p className="lead" style={{ color: 'rgba(255, 255, 255, 0.95)', marginBottom: '32px' }}>
             Soluciones en ingeniería y construcción con excelencia, seguridad y cumplimiento
           </p>
-          <button className="btn btn-primary btn-lg">Solicitar Presupuesto</button>
+          <button className="btn btn-primary btn-lg" onClick={() => navigate('/presupuesto')}>Solicitar Presupuesto</button>
         </div>
       </section>
 
@@ -63,82 +66,86 @@ export default function Home() {
       <section className="section section-light">
         <div className="container">
           <h2 className="text-center">Valores Corporativos</h2>
-          <p className="lead text-center" style={{ marginBottom: '48px', color: 'var(--gray-600)' }}>
-            Principios que guían nuestro trabajo en cada proyecto
-          </p>
           
-          <div className="row">
-            <div className="col-lg-8 mx-auto">
-              <div className="list-group">
-                
-                {/* VALOR 1 - CAMBIAR ICONO SI LO NECESITAS */}
-                <div className="list-group-item">
-                  <h4 style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '8px' }}>
-                    <span style={{ fontSize: '24px' }}>✓</span>
-                    Calidad y Excelencia
-                  </h4>
-                  <p style={{ marginBottom: 0, color: 'var(--gray-700)' }}>
-                    Ejecutamos cada obra con rigurosidad técnica y estándares superiores.
-                  </p>
-                </div>
-
-                {/* VALOR 2 */}
-                <div className="list-group-item">
-                  <h4 style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '8px' }}>
-                    <span style={{ fontSize: '24px' }}>🛡️</span>
-                    Seguridad Primero
-                  </h4>
-                  <p style={{ marginBottom: 0, color: 'var(--gray-700)' }}>
-                    Protegemos a nuestros trabajadores, clientes y comunidades en cada etapa del proyecto.
-                  </p>
-                </div>
-
-                {/* VALOR 3 */}
-                <div className="list-group-item">
-                  <h4 style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '8px' }}>
-                    <span style={{ fontSize: '24px' }}>📋</span>
-                    Cumplimiento y Responsabilidad
-                  </h4>
-                  <p style={{ marginBottom: 0, color: 'var(--gray-700)' }}>
-                    Honramos plazos, compromisos y normativas, generando confianza duradera.
-                  </p>
-                </div>
-
-                {/* VALOR 4 */}
-                <div className="list-group-item">
-                  <h4 style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '8px' }}>
-                    <span style={{ fontSize: '24px' }}>💡</span>
-                    Innovación y Mejora Continua
-                  </h4>
-                  <p style={{ marginBottom: 0, color: 'var(--gray-700)' }}>
-                    Incorporamos nuevas tecnologías, métodos constructivos y soluciones eficientes.
-                  </p>
-                </div>
-
-                {/* VALOR 5 */}
-                <div className="list-group-item">
-                  <h4 style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '8px' }}>
-                    <span style={{ fontSize: '24px' }}>🤝</span>
-                    Integridad y Transparencia
-                  </h4>
-                  <p style={{ marginBottom: 0, color: 'var(--gray-700)' }}>
-                    Actuamos con ética, claridad y profesionalismo en todas nuestras relaciones.
-                  </p>
-                </div>
-
-                {/* VALOR 6 */}
-                <div className="list-group-item">
-                  <h4 style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '8px' }}>
-                    <span style={{ fontSize: '24px' }}>🌱</span>
-                    Sostenibilidad
-                  </h4>
-                  <p style={{ marginBottom: 0, color: 'var(--gray-700)' }}>
-                    Promovemos prácticas responsables con el entorno y el uso eficiente de los recursos.
-                  </p>
-                </div>
-
+          <div className="row" style={{ marginTop: '32px', gap: '24px' }}>
+            {/* VALOR 1 */}
+            <div style={{ flex: '1 1 calc(33.333% - 16px)', minWidth: '200px' }}>
+              <div style={{
+                paddingLeft: '16px',
+                borderLeft: '4px solid var(--accent)',
+              }}>
+                <h5 style={{ marginBottom: '8px', color: 'var(--primary)', marginTop: 0 }}>Calidad</h5>
+                <p style={{ fontSize: '0.9rem', color: 'var(--gray-700)', marginBottom: 0 }}>
+                  Excelencia técnica en cada proyecto
+                </p>
               </div>
             </div>
+
+            {/* VALOR 2 */}
+            <div style={{ flex: '1 1 calc(33.333% - 16px)', minWidth: '200px' }}>
+              <div style={{
+                paddingLeft: '16px',
+                borderLeft: '4px solid var(--accent)',
+              }}>
+                <h5 style={{ marginBottom: '8px', color: 'var(--primary)', marginTop: 0 }}>Seguridad</h5>
+                <p style={{ fontSize: '0.9rem', color: 'var(--gray-700)', marginBottom: 0 }}>
+                  Protección en cada etapa
+                </p>
+              </div>
+            </div>
+
+            {/* VALOR 3 */}
+            <div style={{ flex: '1 1 calc(33.333% - 16px)', minWidth: '200px' }}>
+              <div style={{
+                paddingLeft: '16px',
+                borderLeft: '4px solid var(--accent)',
+              }}>
+                <h5 style={{ marginBottom: '8px', color: 'var(--primary)', marginTop: 0 }}>Cumplimiento</h5>
+                <p style={{ fontSize: '0.9rem', color: 'var(--gray-700)', marginBottom: 0 }}>
+                  Plazos y compromisos honrados
+                </p>
+              </div>
+            </div>
+
+            {/* VALOR 4 */}
+            <div style={{ flex: '1 1 calc(33.333% - 16px)', minWidth: '200px' }}>
+              <div style={{
+                paddingLeft: '16px',
+                borderLeft: '4px solid var(--accent)',
+              }}>
+                <h5 style={{ marginBottom: '8px', color: 'var(--primary)', marginTop: 0 }}>Innovación</h5>
+                <p style={{ fontSize: '0.9rem', color: 'var(--gray-700)', marginBottom: 0 }}>
+                  Nuevas tecnologías y métodos
+                </p>
+              </div>
+            </div>
+
+            {/* VALOR 5 */}
+            <div style={{ flex: '1 1 calc(33.333% - 16px)', minWidth: '200px' }}>
+              <div style={{
+                paddingLeft: '16px',
+                borderLeft: '4px solid var(--accent)',
+              }}>
+                <h5 style={{ marginBottom: '8px', color: 'var(--primary)', marginTop: 0 }}>Integridad</h5>
+                <p style={{ fontSize: '0.9rem', color: 'var(--gray-700)', marginBottom: 0 }}>
+                  Ética y profesionalismo
+                </p>
+              </div>
+            </div>
+
+            {/* VALOR 6 */}
+            <div style={{ flex: '1 1 calc(33.333% - 16px)', minWidth: '200px' }}>
+              <div style={{
+                paddingLeft: '16px',
+                borderLeft: '4px solid var(--accent)',
+              }}>
+                <h5 style={{ marginBottom: '8px', color: 'var(--primary)', marginTop: 0 }}>Sostenibilidad</h5>
+                <p style={{ fontSize: '0.9rem', color: 'var(--gray-700)', marginBottom: 0 }}>
+                  Responsabilidad ambiental
+                </p>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
@@ -150,7 +157,7 @@ export default function Home() {
           <p className="lead" style={{ color: 'rgba(255, 255, 255, 0.95)', marginBottom: '32px' }}>
             Contáctanos para conocer cómo podemos ayudarte
           </p>
-          <button className="btn btn-primary btn-lg">Solicitar Presupuesto</button>
+          <button className="btn btn-primary btn-lg" onClick={() => navigate('/presupuesto')}>Solicitar Presupuesto</button>
         </div>
       </section>
     </>

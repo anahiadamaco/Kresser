@@ -1,11 +1,11 @@
 :root {
   /* Colores - Paleta Kresser */
-  --primary: #1A3A52;
-  --primary-dark: #0F2438;
-  --primary-light: #2C5282;
-  --accent: #FF8C42;
-  --accent-dark: #E67E2A;
-  --accent-light: #FFB380;
+  --primary: #2D5F7F;
+  --primary-dark: #1F4557;
+  --primary-light: #3D7FA0;
+  --accent: #3FA876;
+  --accent-dark: #2E8659;
+  --accent-light: #5EC898;
   
   --gray-50: #F9FAFB;
   --gray-100: #F3F4F6;
@@ -155,7 +155,7 @@ a:hover {
 .btn-primary:hover {
   background-color: var(--accent-dark);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(255, 140, 66, 0.3);
+  box-shadow: 0 4px 12px rgba(63, 168, 118, 0.3);
 }
 
 .btn-secondary {
@@ -166,7 +166,7 @@ a:hover {
 .btn-secondary:hover {
   background-color: var(--primary-dark);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(26, 58, 82, 0.3);
+  box-shadow: 0 4px 12px rgba(45, 95, 127, 0.3);
 }
 
 .btn-lg {

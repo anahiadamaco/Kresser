@@ -19,11 +19,11 @@ export default function Servicio1() {
           left: 0,
           right: 0,
           bottom: 0,
-          backgroundColor: 'rgba(26, 58, 82, 0.7)',
+          backgroundColor: 'rgba(45, 95, 127, 0.7)',
           zIndex: 1
         }}></div>
         
-        <div className="container" style={{ position: 'relative', zIndex: 2 }}>
+        <div className="container" style={{ position: 'relative', zIndex: 2, textAlign: 'center' }}>
           <h1 style={{ color: 'white', marginBottom: '12px' }}>Servicio 1</h1>
           <p className="lead" style={{ color: 'rgba(255, 255, 255, 0.95)', margin: 0 }}>
             Soluciones profesionales y especializadas

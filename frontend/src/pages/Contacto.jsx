@@ -33,7 +33,8 @@ export default function Contacto() {
         style={{
           backgroundColor: 'var(--primary)',
           color: 'white',
-          padding: '60px 0'
+          padding: '60px 0',
+          textAlign: 'center'
         }}
       >
         <div className="container">
