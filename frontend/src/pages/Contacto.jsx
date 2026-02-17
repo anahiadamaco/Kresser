@@ -9,6 +9,8 @@ export default function Contacto() {
   });
 
   const [enviado, setEnviado] = useState(false);
+  const [cargando, setCargando] = useState(false);
+  const [error, setError] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -18,12 +20,34 @@ export default function Contacto() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Formulario enviado:', formData);
-    setEnviado(true);
-    setFormData({ nombre: '', email: '', telefono: '', mensaje: '' });
-    setTimeout(() => setEnviado(false), 3000);
+    setCargando(true);
+    setError('');
+
+    try {
+      const response = await fetch('http://localhost:3001/api/contacto', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setEnviado(true);
+        setFormData({ nombre: '', email: '', telefono: '', mensaje: '' });
+        setTimeout(() => setEnviado(false), 3000);
+      } else {
+        setError(data.error || 'Error al enviar el formulario');
+      }
+    } catch (err) {
+      setError('Error de conexión. Asegúrate de que el servidor está corriendo en localhost:5000');
+    } finally {
+      setCargando(false);
+    }
   };
 
   return (
@@ -91,7 +115,22 @@ export default function Contacto() {
                       border: '1px solid #c3e6cb'
                     }}
                   >
-                    ¡Mensaje enviado! Nos pondremos en contacto pronto.
+                    ¡Tu mensaje ha sido enviado exitosamente! Te contactaremos pronto.
+                  </div>
+                )}
+
+                {error && (
+                  <div 
+                    style={{
+                      backgroundColor: '#f8d7da',
+                      color: '#721c24',
+                      padding: '12px 16px',
+                      borderRadius: '8px',
+                      marginBottom: '24px',
+                      border: '1px solid #f5c6cb'
+                    }}
+                  >
+                    {error}
                   </div>
                 )}
 
@@ -150,8 +189,13 @@ export default function Contacto() {
                   ></textarea>
                 </div>
 
-                <button type="submit" className="btn btn-primary btn-lg" style={{ width: '100%' }}>
-                  Enviar Mensaje
+                <button 
+                  type="submit" 
+                  className="btn btn-primary btn-lg" 
+                  style={{ width: '100%' }}
+                  disabled={cargando}
+                >
+                  {cargando ? 'Enviando...' : 'Enviar Mensaje'}
                 </button>
               </form>
             </div>

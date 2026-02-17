@@ -5,11 +5,12 @@ export default function Presupuesto() {
     nombre: '',
     email: '',
     empresa: '',
-    descripcion: '',
-    presupuesto: ''
+    descripcion: ''
   });
 
   const [enviado, setEnviado] = useState(false);
+  const [cargando, setCargando] = useState(false);
+  const [error, setError] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -19,12 +20,34 @@ export default function Presupuesto() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Presupuesto solicitado:', formData);
-    setEnviado(true);
-    setFormData({ nombre: '', email: '', empresa: '', descripcion: '', presupuesto: '' });
-    setTimeout(() => setEnviado(false), 3000);
+    setCargando(true);
+    setError('');
+
+    try {
+      const response = await fetch('http://localhost:3001/api/presupuesto', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setEnviado(true);
+        setFormData({ nombre: '', email: '', empresa: '', descripcion: '' });
+        setTimeout(() => setEnviado(false), 3000);
+      } else {
+        setError(data.error || 'Error al enviar la solicitud');
+      }
+    } catch (err) {
+      setError('Error de conexión. Asegúrate de que el servidor está corriendo en localhost:5000');
+    } finally {
+      setCargando(false);
+    }
   };
 
   return (
@@ -65,6 +88,21 @@ export default function Presupuesto() {
                     }}
                   >
                     ¡Tu solicitud ha sido recibida! Nos contactaremos pronto con una propuesta personalizada.
+                  </div>
+                )}
+
+                {error && (
+                  <div 
+                    style={{
+                      backgroundColor: '#f8d7da',
+                      color: '#721c24',
+                      padding: '12px 16px',
+                      borderRadius: '8px',
+                      marginBottom: '24px',
+                      border: '1px solid #f5c6cb'
+                    }}
+                  >
+                    {error}
                   </div>
                 )}
 
@@ -123,26 +161,13 @@ export default function Presupuesto() {
                   ></textarea>
                 </div>
 
-                <div className="form-group">
-                  <label htmlFor="presupuesto" className="form-label">Rango de Presupuesto Estimado</label>
-                  <select
-                    className="form-select"
-                    id="presupuesto"
-                    name="presupuesto"
-                    value={formData.presupuesto}
-                    onChange={handleChange}
-                    required
-                  >
-                    <option value="">Selecciona un rango...</option>
-                    <option value="bajo">$1,000,000 - $5,000,000 CLP</option>
-                    <option value="medio">$5,000,000 - $15,000,000 CLP</option>
-                    <option value="alto">$15,000,000 - $50,000,000 CLP</option>
-                    <option value="premium">Más de $50,000,000 CLP</option>
-                  </select>
-                </div>
-
-                <button type="submit" className="btn btn-primary btn-lg" style={{ width: '100%' }}>
-                  Solicitar Presupuesto
+                <button 
+                  type="submit" 
+                  className="btn btn-primary btn-lg" 
+                  style={{ width: '100%' }}
+                  disabled={cargando}
+                >
+                  {cargando ? 'Enviando...' : 'Solicitar Presupuesto'}
                 </button>
               </form>
             </div>
