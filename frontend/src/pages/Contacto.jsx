@@ -26,7 +26,8 @@ export default function Contacto() {
     setError('');
 
     try {
-      const response = await fetch('http://localhost:3001/api/contacto', {
+      const API_URL = import.meta.env.VITE_API_URL; 
+      const response = await fetch(`${API_URL}/api/contacto`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
