@@ -3,6 +3,8 @@ const express = require('express');
 const cors = require('cors');
 const nodemailer = require('nodemailer');
 
+// Backend API para Kresser
+
 const app = express();
 
 // Middleware
