@@ -46,7 +46,7 @@ export default function Presupuesto() {
         setError(data.error || 'Error al enviar la solicitud');
       }
     } catch (err) {
-      setError('Error de conexión. Asegúrate de que el servidor está corriendo en localhost:5000');
+      setError('Error de conexión. Por favor, intenta nuevamente.');
     } finally {
       setCargando(false);
     }
