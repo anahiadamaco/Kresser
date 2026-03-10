@@ -26,7 +26,7 @@ export default function Contacto() {
     setError('');
 
     try {
-      const API_URL = import.meta.env.VITE_API_URL; 
+      const API_URL = import.meta.env.VITE_API_URL || 'https://kresser-production.up.railway.app';
       const response = await fetch(`${API_URL}/api/contacto`, {
         method: 'POST',
         headers: {

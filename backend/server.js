@@ -6,7 +6,12 @@ const nodemailer = require('nodemailer');
 const app = express();
 
 // Middleware
-app.use(cors());
+const corsOptions = {
+  origin: ['https://www.kresser.cl', 'https://kresser.cl', 'http://localhost:3000', 'http://localhost:5173'],
+  credentials: true,
+  optionsSuccessStatus: 200
+};
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // Ruta raíz
