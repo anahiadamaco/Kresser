@@ -9,6 +9,11 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Ruta raíz
+app.get('/', (req, res) => {
+  res.json({ message: 'Backend Kresser activo', status: 'ok' });
+});
+
 // Configurar transporte de email
 const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST,
