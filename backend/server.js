@@ -24,8 +24,8 @@ app.get('/', (req, res) => {
 // Configurar transporte de email
 const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST,
-  port: process.env.SMTP_PORT,
-  secure: false, // true para 465, false para 587 (Zoho usa 587)
+  port: parseInt(process.env.SMTP_PORT),
+  secure: parseInt(process.env.SMTP_PORT) === 465, // true para 465, false para 587
   auth: {
     user: process.env.SMTP_USER,
     pass: process.env.SMTP_PASSWORD
